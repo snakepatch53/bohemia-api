@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ComboController;
+use App\Http\Controllers\FoodController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SongController;
 use Illuminate\Http\Request;
@@ -33,10 +35,14 @@ Route::group(['prefix' => 'v1'], function () {
 
     Route::post('combo/storage-order', [ComboController::class, 'storeOrder']);
 
+
     // songs -> para obtener todas las canciones
     // songs/search -> para buscar canciones
     // clients -> para obtener todos los clientes
     // clients/dni -> para buscar un cliente por dni
     // orders -> para obtener todos los pedidos
     // combo -> para crear un pedido
+
+    Route::resource('categories', CategoryController::class);
+    Route::resource('foods', FoodController::class);
 });

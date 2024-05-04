@@ -15,22 +15,30 @@ class CategorySeeder extends Seeder
                 'id' => 1,
                 'name' => 'Comida',
                 'description' => 'Platos de comida'
-            ],
+            ]
+        );
+        DB::table('categories')->insert(
             [
                 'id' => 2,
                 'name' => 'Cócteles',
                 'description' => 'Bebidas alcohólicas'
-            ],
+            ]
+        );
+        DB::table('categories')->insert(
             [
                 'id' => 3,
                 'name' => 'Para Cantar',
                 'description' => 'Bebidas para cantar'
-            ],
+            ]
+        );
+        DB::table('categories')->insert(
             [
                 'id' => 4,
                 'name' => 'Botellas',
                 'description' => 'Botellas de licor'
-            ],
+            ]
+        );
+        DB::table('categories')->insert(
             [
                 'id' => 5,
                 'name' => 'Vinos',

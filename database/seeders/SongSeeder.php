@@ -8,14 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class SongSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        $excel_filepath = storage_path('app/public/cancionero.csv');
+        $excel_filepath = storage_path('app/public/canciones-eki.csv');
 
         $excelData = [];
         $excelFile = fopen($excel_filepath, 'r');
@@ -27,18 +22,14 @@ class SongSeeder extends Seeder
         fclose($excelFile);
 
         foreach ($excelData as $key => $value) {
+            $id = $value[0];
+            $id = intval($id);
             DB::table('songs')->insert([
-                'id' => $value[0],
+                'id' => $id,
                 'title' => $value[1],
                 'artist' => $value[2],
                 'gender' => $value[3],
             ]);
         }
-        echo var_dump($excelData);
-        return response()->json([
-            'status' => 'success',
-            'message' => 'CancioneroController@index',
-            'data' => $excelData,
-        ]);
     }
 }

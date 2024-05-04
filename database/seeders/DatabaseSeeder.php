@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             SongSeeder::class,
+            CategorySeeder::class,
+            FoodSeeder::class,
         ]);
     }
 }

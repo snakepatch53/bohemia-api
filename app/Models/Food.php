@@ -13,8 +13,19 @@ class Food extends Model
         'name',
         'description',
         'price',
+        'image',
         'category_id',
     ];
+
+    protected $appends = [
+        'image_url',
+    ];
+
+    public function getImageUrlAttribute()
+    {
+        if ($this->image == null) return asset("storage/app/public/img/food.png");
+        return asset("storage/app/public/img_foods/" . $this->image);
+    }
 
     public function category()
     {

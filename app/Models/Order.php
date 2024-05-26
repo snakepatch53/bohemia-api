@@ -15,7 +15,7 @@ class Order extends Model
     ];
 
     // crearemos un nuevo campo para formatear la fecha en que se creó el registro
-    protected $appends = ['date_str'];
+    protected $appends = ['date_str', 'date_diff'];
 
     public function getDateStrAttribute()
     {
@@ -25,7 +25,19 @@ class Order extends Model
         $date = $this->created_at;
 
         // luego formateo la fecha en el formato deseado y en español
-        return $date->locale('es')->isoFormat('dddd D [de] MMMM [de] YYYY - H[h]:mm');
+        return $date->locale('es')->isoFormat('dddd D [de] MMMM [de] YYYY');
+    }
+
+    public function getDateDiffAttribute()
+    {
+        // quiero obtener la diferencia de tiempo en palabras, por ejemplo: hace 2 horas
+
+        // primero obtengo la fecha en formato Carbon
+        $date = $this->created_at;
+
+        // luego obtengo la diferencia de tiempo en palabras
+        $date->locale('es');
+        return $date->diffForHumans();
     }
 
     public function client()
